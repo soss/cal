@@ -1,0 +1,7 @@
+<html>
+<script type="text/javascript">
+String.prototype.repeat=function(b){return Array(b+1).join(this)};
+function cal(b,d){var a="January Febuary March April May June July August September October November December".split(" "),e=new Date,g=0,f=0,c=1;b=b+1||e.getMonth();d=d||e.getFullYear();f=new Date(d,b,1);e=(new Date(d,b-1,0)).getDate();g=Math.floor((21-(a[b].length+d.toString().length))/2);f=3*f.getDay();console.log("%s%s %s"," ".repeat(g),a[b],d);console.log("Su Mo Tu We Th Fr Sa");for(a="";c<=e;){1==c&&(a+=" ".repeat(f));a=10>c?a+(" "+c.toString()+" "):a+(c.toString()+" ");if(21==a.length||c==e)console.log("%s\n",
+a),a="";c++}}cal(5,2013);
+</script>
+</html>
