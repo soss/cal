@@ -17,7 +17,7 @@ char *monthrel[] = {
 	"October",
 	"November",
 	"December",
-	};
+};
 
 int monthdays[] = {31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
