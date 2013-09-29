@@ -28,7 +28,7 @@ public class Cal
 		monthMap.put(6, "July");
 		monthMap.put(7, "August");
 		monthMap.put(8, "September");
-		monthMap.put(9, "Octobor");
+		monthMap.put(9, "October");
 		monthMap.put(10, "November");
 		monthMap.put(11, "December");
 	}
@@ -52,11 +52,20 @@ public class Cal
 		}
 	}
 	
+	private static String centerString(String s)
+	{
+		String centered = "";
+		int padding = (20 - s.length()) / 2;
+		for(int i = 0; i < padding + 1; i++)
+			centered += " ";
+		centered += s;
+		return centered;
+	}
+	
 	
 	public static void printMonth()
 	{
-		System.out.printf("%15s", monthMap.get(month) + " " + year);
-		System.out.println();
+		System.out.println(centerString(monthMap.get(month) + " " + year));
 		System.out.println(" Su Mo Tu We Th Fr Sa");
 		for(int i = 0; i < days.length; i++)
 		{
