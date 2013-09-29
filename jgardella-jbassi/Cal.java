@@ -12,7 +12,7 @@ public class Cal
 	
 	public static int[][] days = new int[6][7];
 	public static int[] maxDays = { 31, 28, 31, 30, 31, 30, 31, 30, 31, 31, 30, 31 };
-	public static int month, year;
+	public static int month, year, dayOfMonth;
 	public static GregorianCalendar cal;
 	
 	public static HashMap<Integer, String> monthMap = new HashMap<>();
@@ -63,7 +63,12 @@ public class Cal
 			for(int j = 0; j < days[i].length; j++)
 			{
 				if(days[i][j] != 0)
-					System.out.printf("%3d", days[i][j]);
+				{
+					if(days[i][j] == dayOfMonth)
+						System.out.printf("%3s", " \033[47m\033[30m"+days[i][j]+"\033[0m");
+					else
+						System.out.printf("%3s", days[i][j]);
+				}
 				else
 					System.out.print("   ");
 			}
@@ -74,15 +79,21 @@ public class Cal
 	
 	public static void main(String[] args)
 	{
+		packHash();
 		if(args.length == 0)
+		{
 			cal = (GregorianCalendar) GregorianCalendar.getInstance();
+			year = cal.get(Calendar.YEAR);
+			month = cal.get(Calendar.MONTH);
+			dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+			cal.set(Calendar.DAY_OF_MONTH, 0);
+		}
 		else
 		{
 			year = Integer.parseInt(args[0]);
 			month = Integer.parseInt(args[1]);
 			cal = new GregorianCalendar(year, month, 0);
 		}
-		packHash();
 		fill();
 		printMonth();
 	}
